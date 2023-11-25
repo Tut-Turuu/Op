@@ -12,14 +12,17 @@ int main() {
 
     if (func::sum_of_digits(func::min_matrix_el(matrix, n, m)) == func::sum_of_digits(func::max_matrix_el(matrix, n, m))) {
         for (int i = 0; i < n - 1; i++) {
-            if (func::cmp(matrix[i], matrix[i + 1], m)) {
-                for (int j = 0; j < m; j++) {
-                    std::swap(matrix[i][j], matrix[i+1][j]);
+            for (int j = i; j < n; j++) {
+                if (func::cmp(matrix[i], matrix[j], m)) {
+                    for (int k = 0; k < m; k++) {
+                        std::swap(matrix[i][k], matrix[j][k]);
+                    }
                 }
             }
+
+            
         }
     }
-
     func::print_matrix(matrix, n, m);
 
 }
